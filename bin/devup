@@ -9,9 +9,16 @@ fi
 
 if [[ -z "${EV_HOME}" ]]; then
   echo "EV_HOME is not defined"
+  exit 1
 else
   EVerestDevHome="${EV_HOME}"
 fi
 
-echo "${EVerestDevHome}"
+echo "EV_HOME set to ${EVerestDevHome}"
 
+if [ ! -d "${EVerestDevHome}/everest-utils" ]; then
+  echo "everest-utils is not checked out"
+  exit 1
+fi
+
+docker compose -f "${EVerestDevHome}/everest-utils/docker/docker-compose-dev.yml" up -d mqtt-server && docker compose -f "${EVerestDevHome}/everest-utils/docker/docker-compose-dev.yml" up -d nodered
