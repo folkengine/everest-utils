@@ -21,4 +21,5 @@ if [ ! -d "${EVerestDevHome}/everest-utils" ]; then
   exit 1
 fi
 
-docker compose -f "${EVerestDevHome}/everest-utils/docker/docker-compose-dev.yml" up -d mqtt-server && docker compose -f "${EVerestDevHome}/everest-utils/docker/docker-compose-dev.yml" up -d nodered
+docker compose -f "${EVerestDevHome}/everest-utils/docker/docker-compose-dev.yml" up -d mqtt-server \ 
+    && docker compose -f "${EVerestDevHome}/everest-utils/docker/docker-compose-dev.yml" up -d nodered
